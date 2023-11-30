@@ -21,12 +21,14 @@ public class AdminController : Controller
         var products = _context.Product.ToList();
         return View(products);
     }
-    // Thêm sản phẩm mới
+
+    // Hiển thị trang thêm sản phẩm mới
     public IActionResult Create()
     {
         return View();
     }
 
+    // Xử lý yêu cầu POST để thêm sản phẩm mới
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageUrl,Price,Quantity,CategoryId")] Product product)
@@ -40,7 +42,7 @@ public class AdminController : Controller
         return View(product);
     }
 
-    // Chỉnh sửa sản phẩm
+    // Hiển thị trang chỉnh sửa sản phẩm
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -56,6 +58,7 @@ public class AdminController : Controller
         return View(product);
     }
 
+    // Xử lý yêu cầu POST để cập nhật sản phẩm
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageUrl,Price,Quantity,CategoryId")] Product product)
@@ -80,22 +83,7 @@ public class AdminController : Controller
                 }
                 else
                 {
-                    // Tải lại bản ghi từ cơ sở dữ liệu và thử lại
-                    var dbProduct = await _context.Product.FindAsync(id);
-                    if (dbProduct == null)
-                    {
-                        return NotFound();
-                    }
-
-                    dbProduct.Name = product.Name;
-                    dbProduct.Description = product.Description;
-                    dbProduct.ImageUrl = product.ImageUrl;
-                    dbProduct.Price = product.Price;
-                    dbProduct.Quantity = product.Quantity;
-                    dbProduct.CategoryId = product.CategoryId;
-
-                    _context.Update(dbProduct);
-                    await _context.SaveChangesAsync();
+                    throw;
                 }
             }
             return RedirectToAction(nameof(Index));

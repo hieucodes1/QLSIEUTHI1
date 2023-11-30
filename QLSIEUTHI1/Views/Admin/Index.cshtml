@@ -1,35 +1,39 @@
 ﻿@model List<Product>
 @{
-    Layout = "_LayoutAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<h2>Quản lý sản phẩm</h2>
+<section class="content-header">
+    <h2>Quản lý sản phẩm</h2>
+</section>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tên sản phẩm</th>
-            <th>Mô tả</th>
-            <th>Giá</th>
-            <th>Hành động</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-        {
+<section class="content container-fluid">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@product.Id</td>
-                <td>@product.Name</td>
-                <td>@product.Description</td>
-                <td>@product.Price</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@product.Id">Chỉnh sửa</a> |
-                    <a asp-action="Delete" asp-route-id="@product.Id">Xóa</a>
-                </td>
+                <th>ID</th>
+                <th>Tên sản phẩm</th>
+                <th>Mô tả</th>
+                <th>Giá</th>
+                <th>Hành động</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@product.Id">Chỉnh sửa</a> |
+                        <a asp-action="Delete" asp-route-id="@product.Id">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
 
 <a asp-action="Create" class="btn btn-primary">Thêm sản phẩm mới</a>
 <a asp-action="Logout" class="btn btn-danger">Đăng xuất</a>
