@@ -7,14 +7,15 @@ namespace QLSIEUTHI1.Models
     {
         [Key]
         public int Id { get; set; }
+        [System.ComponentModel.DisplayName("Tên sản phẩm")]
         public string? Name { get; set; }
-        public string? Description { get; set; }
-        public string? ImageUrl { get; set; }
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
+        public string? Description { get; set; } //mô tả
+        public string? ImageUrl { get; set; } //ảnh
+        public decimal Price { get; set; } //giá cả
+        public int Quantity { get; set; } //số lượng
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-        public virtual Category? category { get; set; }
+        public virtual Category? category { get; set; } //loại
     }
 }

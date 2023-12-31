@@ -42,13 +42,17 @@
 		<div id="top-header">
 			<div class="container">
 				<ul class="header-links pull-left">
-					<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-					<li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-					<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+					<li><a href="#"><i class="fa fa-phone"></i>096_789_888</a></li>
+					<li><a href="#"><i class="fa fa-envelope-o"></i> hieuemail@email.com</a></li>
+					<li><a href="#"><i class="fa fa-map-marker"></i>Thành Phố Vinh</a></li>
 				</ul>
 				<ul class="header-links pull-right">
-					<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-					<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+					@if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+					{
+						<li><a href="/Products/Create"><i class="fa fa-dollar"></i> Quản lý</a></li>
+					}
+					<li><a href="/Users/Login"><i class="fa fa-user-o"></i> Đăng nhập</a></li>
+					<li><a href="/Users/Logout"><i class="fa fa-user-o"></i> Thoát</a></li>
 				</ul>
 			</div>
 		</div>
@@ -73,15 +77,15 @@
 				<!-- section title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h3 class="title">New Products</h3>
-						<div class="section-nav">
+						<h3 class="title"> </h3>
+						<!--<div class="section-nav">
 							<ul class="section-tab-nav tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
 								<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
 								<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
 								<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<!-- /section title -->
